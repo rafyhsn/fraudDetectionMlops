@@ -1,0 +1,17 @@
+venvMlops/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+mlruns/
+mlflowArtifacts/
+mlflowDatabase.db
+
+dataFolder/*.csv
+!dataFolder/.gitkeep
+
+sourceCode/modelFiles/*.pkl
+sourceCode/plotFiles/*.png
+reportsFolder/*.csv
+
+.DS_Store

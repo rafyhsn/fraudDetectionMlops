@@ -1,0 +1,38 @@
+groups:
+  - name: fraudDetectionAlerts
+    rules:
+      - alert: HighApiLatency
+        expr: rate(fraud_api_latency_seconds_sum[1m]) / rate(fraud_api_latency_seconds_count[1m]) > 1
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Fraud Detection API latency is high"
+          description: "Average API latency has exceeded 1 second."
+
+      - alert: HighApiErrorRate
+        expr: rate(fraud_api_error_total[1m]) > 0.05
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Fraud Detection API error rate is high"
+          description: "API errors have exceeded the accepted threshold."
+
+      - alert: FraudRecallDrop
+        expr: fraud_model_recall < 0.80
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Fraud recall dropped below threshold"
+          description: "Fraud recall is below 0.80 and retraining should be triggered."
+
+      - alert: DataDriftDetected
+        expr: fraud_data_drift_psi > 0.20
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Data drift detected"
+          description: "PSI drift score exceeded threshold."

@@ -1,0 +1,17 @@
+mlflow
+pandas
+numpy
+scikit-learn
+xgboost
+lightgbm
+imbalanced-learn
+matplotlib
+seaborn
+shap
+fastapi
+uvicorn
+prometheus-client
+evidently
+joblib
+pytest
+flake8
